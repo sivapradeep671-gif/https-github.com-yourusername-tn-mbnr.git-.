@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TN-MBNR</string>
+    <string name="title_activity_main">TN-MBNR</string>
+    <string name="package_name">com.tnmbnr.app</string>
+    <string name="custom_url_scheme">com.tnmbnr.app</string>
+</resources>
