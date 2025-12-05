@@ -1,4 +1,9 @@
 "homepage": "https://sivapradeep671-gif.github.io/https-github.com-yourusername-tn-mbnr.git-./",
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
+  "...": "..." 
+}
 
 {
   "name": "tn-mbnr",
