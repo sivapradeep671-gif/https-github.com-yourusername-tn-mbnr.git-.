@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://sivapradeep671-gif.github.io/TN-MBNR/sitemap.xml
