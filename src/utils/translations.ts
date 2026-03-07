@@ -10,10 +10,10 @@ export const translations = {
             scan_qr: "Scan QR"
         },
         hero: {
-            badge: "Tamil Nadu Municipal Business Name Revolution",
-            title_prefix: "One Name. One Brand.",
-            title_suffix: "One Truth.",
-            subtitle: "Protecting identities, crushing fakes, and empowering real businesses with AI and Blockchain technology.",
+            badge: "TN-MBNR Trust Network Pilot",
+            title_prefix: "TN-MBNR",
+            title_suffix: "TrustReg TN Pilot",
+            subtitle: "Scan once, know the truth. Tamper-Resistant QR for Municipal Business Verification.",
             cta_register: "Register Business",
             cta_dashboard: "View Live Dashboard",
             features: {
@@ -33,15 +33,15 @@ export const translations = {
         },
         impact: {
             title: "Impact Matrix",
-            subtitle: "Measuring the revolution. How TN-MBNR transforms the business landscape.",
+            subtitle: "Measuring the revolution. How TrustReg TN transforms the business landscape.",
             columns: {
                 dimension: "Dimension",
                 advantage: "Advantage"
             },
             rows: [
-                { dim: "Consumer Safety", adv: "70% reduction in counterfeit products (vs. 20% today)" },
+                { dim: "Consumer Safety", adv: "70% reduction in counterfeit products (Simulated based on 100 shop pilot)" },
                 { dim: "Business Protection", adv: "Prevents brand misuse; legal recourse is easier" },
-                { dim: "Municipal Revenue", adv: "₹3-10 Crore annually (vs. ₹50-60 Lakh today)" },
+                { dim: "Municipal Revenue", adv: "₹3-10 Crore annually (Projected based on 50k shops)" },
                 { dim: "Technology", adv: "World-class AI, blockchain, cloud infrastructure" },
                 { dim: "Scalability", adv: "Can be replicated to other states and countries" },
                 { dim: "Transparency", adv: "Citizens can verify businesses instantly" },
@@ -49,7 +49,8 @@ export const translations = {
                 { dim: "Time Efficiency", adv: "Instant verification (vs. 7 days today)" },
                 { dim: "Data Accuracy", adv: "Automated validation (vs. manual entry errors)" },
                 { dim: "Institutional Trust", adv: "Banks and investors can verify businesses digitally" }
-            ]
+            ],
+            note: "* Projected from TN‑MBNR model. Consistent with slide deck."
         },
         register: {
             title: "Business Registration",
@@ -101,10 +102,109 @@ export const translations = {
                 name: "Name of the shop",
                 location: "Where is it located?"
             },
-            submit: "Submit Report"
+            submit: "Submit Report",
+            subtitle: "Your report will be processed by municipal authorities.",
+            categories: {
+                label: "Issue Category",
+                options: {
+                    fraud_qr: "Fraudulent QR",
+                    price_gouging: "Price Gouging",
+                    improper_weight: "Improper Weight",
+                    counterfeit: "Counterfeit Goods",
+                    hygiene: "Poor Hygiene",
+                    other: "Other"
+                }
+            },
+            severity: {
+                label: "Severity Level",
+                options: {
+                    low: "Low",
+                    medium: "Medium",
+                    high: "High",
+                    urgent: "Urgent"
+                }
+            },
+            camera: {
+                live: "Live Camera",
+                upload: "Upload File",
+                take_photo: "Take a photo of the incident",
+                capture: "Capture",
+                cancel: "Cancel",
+                change: "Change Photo",
+                preview: "Preview"
+            },
+            disclaimer: "Blockchain Verification: Your report fingerprint will be stored on-chain for accountability while maintaining your personal anonymity. Misuse of this system is subject to legal action."
+        },
+        scanner: {
+            title: "Scan QR",
+            privacy: "PRIVACY NOTICE: This scanner requires transient GPS access to verify business location. We do not store your precise coordinates after the verification is complete.",
+            ar_active: "AR SCANNER ACTIVE",
+            point_camera: "Point your camera at a TrustReg TN Business QR Code",
+            status: {
+                valid: "✅ VERIFIED BUSINESS",
+                location_mismatch: "⚠️ LOCATION MISMATCH",
+                expired: "⏳ TOKEN EXPIRED",
+                suspicious: "🚨 SUSPICIOUS SCAN"
+            },
+            messages: {
+                valid: "This shop is VERIFIED at this location. It is safe to transact with this business.",
+                location_mismatch: "WARNING: This QR code is registered to another location. Possible stolen identity.",
+                expired: "WARNING: Verification token has expired. Please ask the merchant to refresh their QR.",
+                counterfeit: "FRAUD ALERT: This QR code is identified as counterfeit or malformed. DO NOT PAY."
+            },
+            labels: {
+                secure: "Secure",
+                warning: "Warning",
+                danger: "Danger",
+                business_name: "Business Name",
+                legal_name: "Owner / Legal Name",
+                gst: "GST Number",
+                status: "Status",
+                gov_verified: "Government Verified",
+                license_status: "License Status",
+                reg_location: "Registered Location",
+                business_id: "Business ID"
+            },
+            errors: {
+                geo_unsupported: "Geolocation is not supported by your browser",
+                network: "Verification Failed: Network Error",
+                denied: "Location Access Denied. Cannot verify Geofence.",
+                failed: "Scan Failed"
+            },
+            license: {
+                days_remaining: "days remaining",
+                days_overdue: "days overdue",
+                do_not_transact: "DO NOT TRANSACT"
+            },
+            actions: {
+                scan_another: "Scan Another",
+                report: "Report Business",
+                try_again: "Try Again"
+            }
         },
         footer: {
-            rights: "© 2024 Tamil Nadu Municipal Business Name Revolution (TN-MBNR). All rights reserved."
+            rights: "© 2024 TrustReg TN Pilot Project. This is a prototype concept, not an official government portal."
+        },
+        tech_stack: {
+            title: "Technical Architecture",
+            subtitle: "Built with scalable government-grade technologies.",
+            frontend: "Citizen PWA & Admin Portal (React/Next.js)",
+            backend: "API Gateway & Microservices (Scalable)",
+            db: "Secure Storage: PostgreSQL (Encrypted)",
+            ai: "AI Fraud Engine: Anomaly Detection Models",
+            blockchain: "Permissioned Ledger: Audit Trail & Integrity"
+        },
+        hackathon: {
+            title: "For Hackathon Jury",
+            problem: "Problem: Counterfeit businesses and unchecked name duplication cause revenue loss and consumer distrust.",
+            solution: "Solution: An AI-powered, Blockchain-backed digital identity system for municipal business verification.",
+            impact_title: "Key Impact:",
+            impact_points: [
+                "Automated verification reduces admin workload by 90%",
+                "Tamper-proof records build institutional trust",
+                "Community-driven verification empowers citizens"
+            ],
+            roadmap: "Future: Integration with GST, UDYAM, and statewide roll-out."
         }
     },
     ta: {
@@ -118,10 +218,10 @@ export const translations = {
             scan_qr: "QR ஸ்கேன்"
         },
         hero: {
-            badge: "தமிழ்நாடு நகராட்சி வணிகப் பெயர் புரட்சி",
-            title_prefix: "ஒரு பெயர். ஒரு அடையாளம்.",
-            title_suffix: "ஒரு உண்மை.",
-            subtitle: "AI மற்றும் பிளாக்செயின் தொழில்நுட்பத்துடன் அடையாளங்களைப் பாதுகாத்தல், போலிகளை அழித்தல் மற்றும் உண்மையான வணிகங்களை மேம்படுத்துதல்.",
+            badge: "TN-MBNR நம்பிக்கை நெட்வொர்க் முன்னோடி",
+            title_prefix: "TN-MBNR",
+            title_suffix: "TrustReg TN Pilot",
+            subtitle: "ஒரு முறை ஸ்கேன் செய்யுங்கள், உண்மையை அறியுங்கள். நகராட்சி வணிகச் சரிபார்ப்பிற்கான சேதமில்லாத QR.",
             cta_register: "வணிகத்தைப் பதிவுசெய்க",
             cta_dashboard: "நேரடி தரவு பலகையைப் பார்க்கவும்",
             features: {
@@ -141,23 +241,24 @@ export const translations = {
         },
         impact: {
             title: "தாக்க அணி",
-            subtitle: "புரட்சியை அளவிடுதல். TN-MBNR வணிக நிலப்பரப்பை எவ்வாறு மாற்றுகிறது.",
+            subtitle: "புரட்சியை அளவிடுதல். TrustReg TN வணிக நிலப்பரப்பை எவ்வாறு மாற்றுகிறது.",
             columns: {
                 dimension: "பரிமாணம்",
                 advantage: "நன்மை"
             },
             rows: [
-                { dim: "நுகர்வோர் பாதுகாப்பு", adv: "போலி தயாரிப்புகளில் 70% குறைப்பு (இன்று 20%)" },
-                { dim: "வணிகப் பாதுகாப்பு", adv: "பிராண்ட் தவறாகப் பயன்படுத்துவதைத் தடுக்கிறது; சட்ட நடவடிக்கை எளிதானது" },
-                { dim: "நகராட்சி வருவாய்", adv: "ஆண்டுக்கு ₹3-10 கோடி (இன்று ₹50-60 லட்சம்)" },
-                { dim: "தொழில்நுட்பம்", adv: "உலகத் தரம் வாய்ந்த AI, பிளாக்செயின், கிளவுட் உள்கட்டமைப்பு" },
-                { dim: "அளவிடுதல்", adv: "பிற மாநிலங்கள் மற்றும் நாடுகளுக்கு விரிவுபடுத்தலாம்" },
-                { dim: "வெளிப்படைத்தன்மை", adv: "குடிமக்கள் வணிகங்களை உடனடியாகச் சரிபார்க்கலாம்" },
-                { dim: "அமலாக்கம்", adv: "செயலில் உள்ள AI அடிப்படையிலான (கைமுறை புகார் அடிப்படையிலானது அல்ல)" },
-                { dim: "நேரத் திறன்", adv: "உடனடி சரிபார்ப்பு (இன்று 7 நாட்கள்)" },
-                { dim: "தரவு துல்லியம்", adv: "தானியங்கி சரிபார்ப்பு (கைமுறை பிழைகள் இல்லை)" },
-                { dim: "நிறுவன நம்பிக்கை", adv: "வங்கிகள் மற்றும் முதலீட்டாளர்கள் வணிகங்களை டிஜிட்டல் முறையில் சரிபார்க்கலாம்" }
-            ]
+                { dim: "நுகர்வோர் பாதுகாப்பு", adv: "போலி தயாரிப்புகளில் 70% குறைப்பு (100 கடைகளின் அடிப்படையில் கணிக்கப்பட்டது)" },
+                { dim: "வணிகப் பாதுகாப்பு", adv: "பிராண்ட் தவறாகப் பயன்படுத்துவதைத் தடுக்கிறது" },
+                { dim: "நகராட்சி வருவாய்", adv: "ஆண்டுக்கு ₹3-10 கோடி (மதிப்பிடப்பட்டது)" },
+                { dim: "தொழில்நுட்பம்", adv: "உலகத் தரம் வாய்ந்த AI, பிளாக்செயின்" },
+                { dim: "அளவிடுதல்", adv: "பிற மாநிலங்களுக்கும் விரிவுபடுத்தலாம்" },
+                { dim: "வெளிப்படைத்தன்மை", adv: "குடிமக்கள் உடனடியாகச் சரிபார்க்கலாம்" },
+                { dim: "அமலாக்கம்", adv: "செயலில் உள்ள AI அடிப்படையிலான கண்காணிப்பு" },
+                { dim: "நேரத் திறன்", adv: "உடனடி சரிபார்ப்பு (7 நாட்கள் அல்ல)" },
+                { dim: "தரவு துல்லியம்", adv: "தானியங்கி சரிபார்ப்பு" },
+                { dim: "நிறுவன நம்பிக்கை", adv: "டிஜிட்டல் நம்பகத்தன்மை" }
+            ],
+            note: "* TN‑MBNR மாதிரியிலிருந்து கணிக்கப்பட்டது. விளக்கக்காட்சியுடன் ஒத்துப்போகிறது."
         },
         register: {
             title: "வணிகப் பதிவு",
@@ -209,10 +310,109 @@ export const translations = {
                 name: "கடையின் பெயர்",
                 location: "அது எங்கே அமைந்துள்ளது?"
             },
-            submit: "புகாரைச் சமர்ப்பிக்கவும்"
+            submit: "புகாரைச் சமர்ப்பிக்கவும்",
+            subtitle: "உங்கள் அறிக்கை நகராட்சி அதிகாரிகளால் செயல்படுத்தப்படும்.",
+            categories: {
+                label: "பிரச்சனை வகை",
+                options: {
+                    fraud_qr: "மோசடியான QR",
+                    price_gouging: "விலை ஏற்றம்",
+                    improper_weight: "முறையற்ற எடை",
+                    counterfeit: "போலி பொருட்கள்",
+                    hygiene: "மோசமான சுகாதாரம்",
+                    other: "மற்றவை"
+                }
+            },
+            severity: {
+                label: "தீவிரத்தன்மை",
+                options: {
+                    low: "குறைந்த",
+                    medium: "நடுத்தர",
+                    high: "அதிக",
+                    urgent: "அவசரம்"
+                }
+            },
+            camera: {
+                live: "நேரடி கேமரா",
+                upload: "கோப்பைப் பதிவேற்றவும்",
+                take_photo: "சம்பவத்தை புகைப்படம் எடுக்கவும்",
+                capture: "பிடிக்கவும்",
+                cancel: "ரத்துசெய்",
+                change: "புகைப்படத்தை மாற்றவும்",
+                preview: "முன்னோட்டம்"
+            },
+            disclaimer: "பிளாக்செயின் சரிபார்ப்பு: உங்கள் அறிக்கையின் கைரேகை பொறுப்புக்கூறலுக்காக செயினில் சேமிக்கப்படும், ஆனால் உங்கள் தனிப்பட்ட அடையாளம் பாதுகாக்கப்படும். இந்த அமைப்பை தவறாகப் பயன்படுத்தினால் சட்ட நடவடிக்கை எடுக்கப்படும்."
+        },
+        scanner: {
+            title: "QR ஸ்கேன்",
+            privacy: "தனியுரிமை அறிவிப்பு: வணிக இருப்பிடத்தைச் சரிபார்க்க இந்த ஸ்கேனருக்கு தற்காலிக ஜிபிஎஸ் அணுகல் தேவை. சரிபார்ப்பு முடிந்ததும் உங்கள் துல்லியமான ஆயத்தொலைவுகளை நாங்கள் சேமிப்பதில்லை.",
+            ar_active: "AR ஸ்கேனர் செயலில் உள்ளது",
+            point_camera: "TrustReg TN வணிக QR குறியீட்டை நோக்கி உங்கள் கேமராவைத் திருப்பவும்",
+            status: {
+                valid: "✅ சரிபார்க்கப்பட்ட வணிகம்",
+                location_mismatch: "⚠️ இருப்பிடம் பொருந்தவில்லை",
+                expired: "⏳ டோக்கன் காலாவதியானது",
+                suspicious: "🚨 சந்தேகத்திற்குரிய ஸ்கேன்"
+            },
+            messages: {
+                valid: "இந்த கடை இந்த இடத்தில் சரிபார்க்கப்பட்டது. இந்த வணிகத்துடன் பரிவர்த்தனை செய்வது பாதுகாப்பானது.",
+                location_mismatch: "எச்சரிக்கை: இந்த QR குறியீடு வேறு இடத்தில் பதிவு செய்யப்பட்டுள்ளது. அடையாளம் திருடப்பட்டிருக்கலாம்.",
+                expired: "எச்சரிக்கை: சரிபார்ப்பு டோக்கன் காலாவதியானது. வணிகரிடம் தங்கள் QR-ஐ புதுப்பிக்குமாறு கேட்கவும்.",
+                counterfeit: "மோசடி எச்சரிக்கை: இந்த QR குறியீடு போலானது அல்லது தவறாக உருவாக்கப்பட்டது. பணம் செலுத்த வேண்டாம்."
+            },
+            labels: {
+                secure: "பாதுகாப்பான",
+                warning: "எச்சரிக்கை",
+                danger: "ஆபத்து",
+                business_name: "வணிகப் பெயர்",
+                legal_name: "உரிமையாளர் / சட்டப்பூர்வ பெயர்",
+                gst: "GST எண்",
+                status: "நிலை",
+                gov_verified: "அரசு சரிபார்க்கப்பட்டது",
+                license_status: "உரிமம் நிலை",
+                reg_location: "பதிவு செய்யப்பட்ட இடம்",
+                business_id: "வணிக ஐடி"
+            },
+            errors: {
+                geo_unsupported: "உங்கள் உலாவியில் புவி இருப்பிடம் ஆதரிக்கப்படவில்லை",
+                network: "சரிபார்ப்பு தோல்வியடைந்தது: பிணைய பிழை",
+                denied: "இருப்பிட அணுகல் மறுக்கப்பட்டது. ஜியோஃபென்ஸைச் சரிபார்க்க முடியவில்லை.",
+                failed: "ஸ்கேன் தோல்வியடைந்தது"
+            },
+            license: {
+                days_remaining: "நாட்கள் மீதமுள்ளன",
+                days_overdue: "நாட்கள் காலாவதியாகிவிட்டன",
+                do_not_transact: "பரிவர்த்தனை செய்ய வேண்டாம்"
+            },
+            actions: {
+                scan_another: "மற்றொன்றை ஸ்கேன் செய்",
+                report: "வணிகத்தைப் புகாரளிக்கவும்",
+                try_again: "மீண்டும் முயற்சிக்கவும்"
+            }
         },
         footer: {
-            rights: "© 2024 தமிழ்நாடு நகராட்சி வணிகப் பெயர் புரட்சி (TN-MBNR). அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
+            rights: "© 2024 TrustReg TN முன்னோடித் திட்டம். இது ஒரு முன்மாதிரி கருத்துரு மட்டுமே."
+        },
+        tech_stack: {
+            title: "தொழில்நுட்ப கட்டமைப்பு",
+            subtitle: "அளவிடுதல் மற்றும் பாதுகாப்புக்காக அரசு தரநிலை தொழில்நுட்பங்கள்.",
+            frontend: "குடிமக்கள் செயலி மற்றும் நிர்வாக தளம் (React/Next.js)",
+            backend: "API கேட்வே மற்றும் மைக்ரோ சர்வீசஸ்",
+            db: "பாதுகாப்பான சேமிப்பு: PostgreSQL (Encrypted)",
+            ai: "AI மோசடி தடுப்பு இயந்திரம்",
+            blockchain: "அனுமதிக்கப்பட்ட லெட்ஜர்: தணிக்கை மற்றும் நேர்மை"
+        },
+        hackathon: {
+            title: "நடுவர்களுக்கான குறிப்பு",
+            problem: "பிரச்சனை: போலி வணிகங்கள் மற்றும் பெயர் நகலெடுப்பு.",
+            solution: "தீர்வு: AI மற்றும் பிளாக்செயின் அடிப்படையிலான டிஜிட்டல் அடையாள அமைப்பு.",
+            impact_title: "முக்கிய தாக்கம்:",
+            impact_points: [
+                "நிர்வாக பணிச்சுமையைக் குறைக்கிறது",
+                "மாற்ற முடியாத பதிவுகள்",
+                "சமூக அடிப்படையிலான சரிபார்ப்பு"
+            ],
+            roadmap: "எதிர்காலம்: GST மற்றும் UDYAM ஒருங்கிணைப்பு."
         }
     }
 };

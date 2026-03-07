@@ -15,33 +15,25 @@ export const ImpactMatrix: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="overflow-hidden rounded-xl border border-slate-800 shadow-2xl">
-                    <table className="min-w-full divide-y divide-slate-800">
-                        <thead className="bg-slate-950">
-                            <tr>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-yellow-500 uppercase tracking-wider">
-                                    {t.impact.columns.dimension}
-                                </th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                                    {t.impact.columns.advantage}
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-slate-900 divide-y divide-slate-800">
-                            {data.map((item, index) => (
-                                <tr key={index} className="hover:bg-slate-800/50 transition-colors">
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                                        {item.dim}
-                                    </td>
-                                    <td className="px-6 py-4 text-sm text-slate-400">
-                                        {item.adv}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {data.map((item, index) => (
+                        <div key={index} className="glass-card glass-card-hover p-6 rounded-2xl border border-slate-800/50 group">
+                            <div className="flex items-center mb-4">
+                                <div className="w-2 h-2 rounded-full bg-yellow-500 mr-3 shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
+                                <h3 className="text-sm font-bold text-yellow-500 uppercase tracking-widest">{item.dim}</h3>
+                            </div>
+                            <p className="text-slate-300 leading-relaxed group-hover:text-white transition-colors capitalize">
+                                {item.adv}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
+
+            {/* Assumption Disclaimer */}
+            <p className="mt-4 text-center text-xs text-slate-500 italic">
+                {t.impact.note}
+            </p>
         </div>
     );
 };

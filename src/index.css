@@ -13,4 +13,50 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900/50 backdrop-blur-md border border-slate-800/50 shadow-xl;
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-slate-800/70 hover:border-yellow-500/30 transition-all duration-300;
+  }
+
+  .text-glow-yellow {
+    text-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
+  }
+
+  .aurora-blob {
+    @apply absolute rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-pulse;
+  }
+
+  /* Typography Utilities */
+  .font-display {
+    @apply font-black tracking-technical uppercase;
+  }
+
+  .font-mono-tech {
+    @apply font-mono tracking-tight text-[10px] uppercase;
+  }
+
+  /* Layout Tokens */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10;
+  }
+
+  .island-layout {
+    @apply max-w-3xl mx-auto px-4 py-8 sm:py-12;
+  }
+
+  /* Glow System */
+  .glow-border {
+    @apply border border-slate-800/50 hover:border-yellow-500/30 transition-all duration-500;
+  }
+
+  .inner-glow {
+    @apply shadow-inner-glow;
+  }
 }

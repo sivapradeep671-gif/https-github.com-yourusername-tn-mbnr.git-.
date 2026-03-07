@@ -5,6 +5,7 @@ import { translations, type Language } from '../utils/translations';
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
+    toggleLanguage: () => void;
     t: typeof translations.en;
 }
 
@@ -13,9 +14,14 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const [language, setLanguage] = useState<Language>('en');
 
+    const toggleLanguage = () => {
+        setLanguage(prev => prev === 'en' ? 'ta' : 'en');
+    };
+
     const value = {
         language,
         setLanguage,
+        toggleLanguage,
         t: translations[language]
     };
 
