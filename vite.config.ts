@@ -11,7 +11,7 @@ export default defineConfig(() => ({
       '/api': 'http://localhost:3001'
     }
   },
-  base: './',
+  base: process.env.RENDER || process.env.NODE_ENV === 'production' ? '/' : './',
   test: {
     globals: true,
     environment: 'jsdom',
