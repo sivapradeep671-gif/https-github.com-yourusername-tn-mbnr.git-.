@@ -35,7 +35,7 @@ export default defineConfig(() => ({
       '/api': 'http://localhost:3001'
     }
   },
-  base: process.env.GITHUB_PAGES ? '/TN-MBNR/' : '/',
+  base: process.env.VITE_BASE_PATH || (process.env.GITHUB_PAGES ? '/TN-MBNR/' : '/'),
   test: {
     globals: true,
     environment: 'jsdom',
