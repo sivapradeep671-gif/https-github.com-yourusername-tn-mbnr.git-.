@@ -135,9 +135,11 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ businesses, reports })
                     })}
 
                     {reports.map((report: CitizenReport, idx: number) => {
-                        // For demo, if coordinates missing, generate near center
-                        const lat = report.latitude || centerPosition[0] + (Math.random() - 0.5) * 5;
-                        const lng = report.longitude || centerPosition[1] + (Math.random() - 0.5) * 5;
+                        // For demo, if coordinates missing, generate near center deterministically
+                        const pseudoSeedX = Math.abs(Math.sin((idx + 1) * 1000));
+                        const pseudoSeedY = Math.abs(Math.cos((idx + 1) * 1000));
+                        const lat = report.latitude || centerPosition[0] + (pseudoSeedX - 0.5) * 5;
+                        const lng = report.longitude || centerPosition[1] + (pseudoSeedY - 0.5) * 5;
 
                         return (
                             <Marker

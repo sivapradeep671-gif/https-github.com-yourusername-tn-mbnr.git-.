@@ -9,12 +9,13 @@ interface VoiceInputProps {
 
 export const VoiceInput: React.FC<VoiceInputProps> = ({ onResult, placeholder = "Listening..." }) => {
     const [isListening, setIsListening] = useState(false);
-    const [isSupported, setIsSupported] = useState(true);
+    const [isSupported] = useState(() => {
+        return typeof window !== 'undefined' && 
+               (('webkitSpeechRecognition' in window) || ('SpeechRecognition' in window));
+    });
 
     useEffect(() => {
-        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-            setIsSupported(false);
-        }
+        // Voice input initialization if needed
     }, []);
 
     const startListening = () => {

@@ -12,7 +12,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:backend": "node server/test.cjs",
+    "test:backend": "vitest run --dir server",
     "dev:all": "start npm run server && npm run dev",
     "build": "vite build",
     "build:check": "tsc -b && vite build",

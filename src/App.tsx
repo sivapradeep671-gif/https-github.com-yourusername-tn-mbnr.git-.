@@ -64,10 +64,10 @@ function AppContent() {
   useEffect(() => {
     if (user) {
       if (user.role === 'citizen' && (currentView === 'REGISTER' || currentView === 'DASHBOARD')) {
-        setCurrentView('HOME');
+        setTimeout(() => setCurrentView('HOME'), 0);
       }
       if (user.role === 'business' && currentView === 'REPORT') {
-        setCurrentView('HOME');
+        setTimeout(() => setCurrentView('HOME'), 0);
       }
     }
   }, [user, currentView]);

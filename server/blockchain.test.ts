@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 // We need to use require if it's a .cjs file or just import it if Vitest supports it.
 // Vitest usually handles requiring .cjs from ESM ok.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { Blockchain, Block } = require('./blockchain.cjs');
 
 describe('Blockchain', () => {

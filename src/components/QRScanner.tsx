@@ -22,6 +22,34 @@ export const QRScanner: React.FC<QRScannerProps> = ({ businesses }) => {
     const [showArOverlay] = useState(true);
     const [smsSent, setSmsSent] = useState<string | null>(null);
 
+    const handleScanResult = (result: ScanResult) => {
+        if (result.status === 'VALID') {
+            setXp(prev => prev + 50);
+            if ('vibrate' in navigator) navigator.vibrate(100);
+            announceStatus('VALID', result.business?.name);
+            showToast('Scan Verified Successfully', 'success');
+        } else {
+            if ('vibrate' in navigator) navigator.vibrate([300, 100, 300]);
+            announceStatus(result.status, result.business?.name);
+
+            if (result.status === 'COUNTERFEIT') {
+                setSmsSent(`CMS Alert Sent to Owner: ${result.business?.name || 'Unknown Shop'}`);
+                showToast('Potential Counterfeit Detected!', 'error');
+                
+                // Trigger real-time alert to merchant
+                notificationService.alertOwner(
+                    result.business?.name || "Emergency node",
+                    "0000000001", // Mocked phone for demo
+                    "Potential counterfeit QR scan attempt"
+                );
+                
+                setTimeout(() => setSmsSent(null), 5000);
+            } else {
+                showToast(result.message, 'warning');
+            }
+        }
+    };
+
     useEffect(() => {
         const scanner = new Html5QrcodeScanner(
             "reader",
@@ -133,33 +161,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({ businesses }) => {
         };
     }, [businesses, t]);
 
-    const handleScanResult = (result: ScanResult) => {
-        if (result.status === 'VALID') {
-            setXp(prev => prev + 50);
-            if ('vibrate' in navigator) navigator.vibrate(100);
-            announceStatus('VALID', result.business?.name);
-            showToast('Scan Verified Successfully', 'success');
-        } else {
-            if ('vibrate' in navigator) navigator.vibrate([300, 100, 300]);
-            announceStatus(result.status, result.business?.name);
 
-            if (result.status === 'COUNTERFEIT') {
-                setSmsSent(`CMS Alert Sent to Owner: ${result.business?.name || 'Unknown Shop'}`);
-                showToast('Potential Counterfeit Detected!', 'error');
-                
-                // Trigger real-time alert to merchant
-                notificationService.alertOwner(
-                    result.business?.name || "Emergency node",
-                    "0000000001", // Mocked phone for demo
-                    "Potential counterfeit QR scan attempt"
-                );
-                
-                setTimeout(() => setSmsSent(null), 5000);
-            } else {
-                showToast(result.message, 'warning');
-            }
-        }
-    };
 
     const resetScan = () => {
         setScanResult(null);
