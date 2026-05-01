@@ -13,7 +13,7 @@ export interface BusinessSingleResponse extends ApiResponse<Business> {
     blockHash?: string;
 }
 
-export interface AuthResponse extends ApiResponse<void> {
+export type AuthResponse = ApiResponse<void> & {
     token: string;
     user: {
         id: string;

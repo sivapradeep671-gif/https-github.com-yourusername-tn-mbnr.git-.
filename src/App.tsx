@@ -94,7 +94,8 @@ function AppContent() {
     const checkBackend = async () => {
       const isOnline = await api.checkHealth();
       if (!isOnline) {
-        setIsBackendOffline(true);
+        // Use queueMicrotask to avoid synchronous setState in effect
+        queueMicrotask(() => setIsBackendOffline(true));
       }
     };
     checkBackend();
@@ -127,6 +128,7 @@ function AppContent() {
     Object.assign(window, handlers);
     return () => {
       Object.keys(handlers).forEach(key => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         delete (window as any)[key];
       });
     };

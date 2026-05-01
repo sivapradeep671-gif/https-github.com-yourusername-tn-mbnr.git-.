@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Database, Activity, ShieldCheck, Zap, AlertTriangle, MapPin, Bot, Search } from 'lucide-react';
+import { LayoutDashboard, Database, Activity, ShieldCheck, Zap, AlertTriangle, MapPin, Bot, Search, Smartphone } from 'lucide-react';
 import { aiService } from '../services/geminiService';
 import type { Business, CitizenReport } from '../types/types';
 import { api } from '../api/client';
+import { showToast } from '../hooks/useToast';
 import { AdminAnalytics } from './AdminAnalytics';
 import { ApprovalWorkflow } from './ApprovalWorkflow';
 import { BlockchainLedger } from './BlockchainLedger';
@@ -45,7 +46,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ businesses, reports, onUpd
     const [slaFilter, setSlaFilter] = useState<'ALL' | 'COMPLIANT' | 'URGENT' | 'BREACHED'>('ALL');
     const [isLedgerOpen, setIsLedgerOpen] = useState(false);
     const [ledgerAssetId, setLedgerAssetId] = useState<string | undefined>(undefined);
-    const [fullLedger, setFullLedger] = useState<any[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [fullLedger, setFullLedger] = useState<Record<string, unknown>[]>([]);
     
     // Notification Demo State
     const [testRecipient, setTestRecipient] = useState('');
@@ -64,7 +66,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ businesses, reports, onUpd
                 const approvalsRes = await api.get<{ data: Business[] }>('/admin/pending-approvals');
                 setPendingApprovals(approvalsRes.data);
 
-                const ledgerRes = await api.get<{ data: any[] }>('/ledger');
+                const ledgerRes = await api.get<{ data: Record<string, unknown>[] }>('/ledger');
                 setFullLedger(ledgerRes.data);
             } catch (err) {
                 console.error("Failed to fetch admin stats:", err);
@@ -233,7 +235,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ businesses, reports, onUpd
                                 ].map(f => (
                                     <button
                                         key={f.id}
-                                        onClick={() => setSlaFilter(f.id as any)}
+                                        onClick={() => setSlaFilter(f.id as typeof slaFilter)}
                                         className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${
                                             slaFilter === f.id 
                                                 ? 'bg-white/10 text-white shadow-xl' 
@@ -656,7 +658,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ businesses, reports, onUpd
                     businesses={businesses} 
                     onAuditComplete={async () => {
                         // Refresh ledger after sim
-                        const ledgerRes = await api.get<{ data: any[] }>('/ledger');
+                        const ledgerRes = await api.get<{ data: Record<string, unknown>[] }>('/ledger');
                         setFullLedger(ledgerRes.data);
                     }}
                 />
@@ -690,7 +692,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ businesses, reports, onUpd
                                         if (!testRecipient) return showToast('Recipient required', 'warning');
                                         setIsSendingTest(true);
                                         const { notificationService } = await import('../services/notificationService');
-                                        const success = await notificationService.send({
+                                        await notificationService.send({
                                             to: testRecipient,
                                             type: 'SMS',
                                             message: 'TRUSTREG TN SECURITY TEST: Your node is successfully synchronized with the regional notification grid.'
@@ -708,7 +710,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ businesses, reports, onUpd
                                         if (!testRecipient) return showToast('Recipient required', 'warning');
                                         setIsSendingTest(true);
                                         const { notificationService } = await import('../services/notificationService');
-                                        const success = await notificationService.send({
+                                        await notificationService.send({
                                             to: testRecipient,
                                             type: 'EMAIL',
                                             subject: 'TrustReg TN: Node Verification',

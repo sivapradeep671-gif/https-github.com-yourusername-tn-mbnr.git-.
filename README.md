@@ -1,7 +1,7 @@
 # 💎 TN-MBNR: TrustReg TN
 ### Enterprise-Grade Business Intelligence & Fraud Prevention
 
-[![CI/CD Pipeline](https://github.com/sivapradeep671-gif/TN-MBNR/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/sivapradeep671-gif/TN-MBNR/actions)
+[![CI/CD Pipeline](https://github.com/sivapradeep671-gif/tn-mbnr/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/sivapradeep671-gif/tn-mbnr/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
 [![AI-Powered](https://img.shields.io/badge/AI-Gemini%202.0%20Flash-orange.svg)](https://deepmind.google/technologies/gemini/)
@@ -599,7 +599,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For issues and questions:
 - **Email:** support@tn-mbnr@gmail.com
-- **GitHub Issues:** [Create an issue](https://github.com/sivapradeep671-gif/TN-MBNR/issues)
+- **GitHub Issues:** [Create an issue](https://github.com/sivapradeep671-gif/tn-mbnr/issues)
 - **Documentation:** See [`TESTING_GUIDE.md`](./TESTING_GUIDE.md)
 
 ---

@@ -158,8 +158,9 @@ export const QRScanner: React.FC<QRScannerProps> = ({ businesses }) => {
         scanner.render(onScanSuccess, onScanFailure);
 
         return () => {
-            try { scanner.clear(); } catch { }
+            try { scanner.clear(); } catch { /* cleanup */ }
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [businesses, t]);
 
 

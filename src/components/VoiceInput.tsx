@@ -22,7 +22,8 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({ onResult, placeholder })
             return;
         }
 
-        const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
         const recognition = new SpeechRecognition();
 
         // Dynamically set language based on app context
@@ -34,6 +35,7 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({ onResult, placeholder })
             setIsListening(true);
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         recognition.onresult = (event: any) => {
             const transcript = event.results[0][0].transcript;
             onResult(transcript);
@@ -41,6 +43,7 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({ onResult, placeholder })
             showToast(language === 'ta' ? "உரை சேகரிக்கப்பட்டது" : "Speech captured", "success");
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         recognition.onerror = (event: any) => {
             console.error("Speech recognition error", event.error);
             setIsListening(false);
