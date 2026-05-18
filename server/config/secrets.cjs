@@ -1,34 +1,67 @@
 /**
- * Server Configuration & Secrets Management
+ * Server Configuration & Secrets Management (AWS Secrets Manager Integrated)
  */
 const path = require('path');
+const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-function getSecret(name, fallback = null) {
-  const value = process.env[name];
-  if (!value && !fallback && process.env.NODE_ENV === 'production') {
-    throw new Error(`CRITICAL ERROR: Environment variable ${name} is missing in PRODUCTION.`);
-  }
-  return value || fallback;
-}
-
+let isLoaded = false;
 const config = {
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3001,
-  auth: {
-    secret: getSecret('AUTH_SECRET', 'tn-mbnr-auth-secret-dev-only-2025'),
-    expiresIn: '24h',
-  },
-  qr: {
-    secret: getSecret('QR_SECRET_KEY', 'tn-mbnr-qr-secret-dev-only-2025'),
-    expiryMs: 30000, // 30 seconds
-  },
-  db: {
-    path: process.env.DB_PATH || './tn_mbnr.db',
-  },
-  ai: {
-    geminiKey: getSecret('VITE_GEMINI_API_KEY'), // Shared or distinct key
+  auth: { secret: 'tn-mbnr-auth-secret-dev-only-2025', expiresIn: '24h' },
+  qr: { secret: 'tn-mbnr-qr-secret-dev-only-2025', expiryMs: 30000 },
+  db: { path: process.env.DB_PATH || './tn_mbnr.db', uri: process.env.MONGODB_URI },
+  ai: { geminiKey: process.env.VITE_GEMINI_API_KEY },
+  communications: {
+    twilioSid: process.env.TWILIO_ACCOUNT_SID,
+    twilioToken: process.env.TWILIO_AUTH_TOKEN,
+    sendgridKey: process.env.SENDGRID_API_KEY
   }
 };
 
-module.exports = config;
+/**
+ * Bootstraps the application configuration by pulling from AWS Secrets Manager
+ * if running in a production or staging environment.
+ */
+async function loadSecrets() {
+  if (isLoaded) return config;
+
+  if (config.env === 'production' || config.env === 'staging') {
+    try {
+      const client = new SecretsManagerClient({ region: 'ap-south-1' });
+      const command = new GetSecretValueCommand({ SecretId: `tn-mbnr/${config.env}/credentials` });
+      const response = await client.send(command);
+      
+      const vault = JSON.parse(response.SecretString);
+      
+      // Override local env with secure vault values
+      config.auth.secret = vault.AUTH_SECRET || config.auth.secret;
+      config.qr.secret = vault.QR_SECRET_KEY || config.qr.secret;
+      config.db.uri = vault.MONGODB_URI || config.db.uri;
+      config.ai.geminiKey = vault.VITE_GEMINI_API_KEY || config.ai.geminiKey;
+      config.communications.twilioSid = vault.TWILIO_ACCOUNT_SID || config.communications.twilioSid;
+      config.communications.twilioToken = vault.TWILIO_AUTH_TOKEN || config.communications.twilioToken;
+      config.communications.sendgridKey = vault.SENDGRID_API_KEY || config.communications.sendgridKey;
+      
+      console.log(`[SecretsManager] Successfully loaded secure credentials for ${config.env}`);
+    } catch (error) {
+      console.error(`[SecretsManager] CRITICAL ERROR: Failed to retrieve secrets for ${config.env}`, error);
+      throw new Error('Vault access failed. Halting startup to prevent insecure deployment.');
+    }
+  } else {
+    // Local fallback
+    config.auth.secret = process.env.AUTH_SECRET || config.auth.secret;
+    config.qr.secret = process.env.QR_SECRET_KEY || config.qr.secret;
+  }
+  
+  isLoaded = true;
+  return config;
+}
+
+// Export the config object synchronously for initial reads, 
+// and the async loader to block server startup until secrets are resolved.
+module.exports = {
+  config,
+  loadSecrets
+};

@@ -418,3 +418,34 @@ body {
     min-width: 44px;
   }
 }
+
+/* ================================
+   ACCESSIBILITY & WCAG 2.1 (Section 7)
+   ================================ */
+/* High Contrast Focus Rings for Keyboard Navigation */
+*:focus-visible {
+  outline: 3px solid #facc15 !important;
+  outline-offset: 3px !important;
+  border-radius: 4px;
+}
+
+[data-theme="customer"] *:focus-visible {
+  outline: 3px solid #818cf8 !important;
+}
+
+/* Reduced Motion & Low-Bandwidth Support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.low-bandwidth-mode .bg-video,
+.low-bandwidth-mode .heavy-image,
+.low-bandwidth-mode .mesh-gradient {
+  background-image: none !important;
+  display: none !important;
+}

@@ -94,6 +94,11 @@ const tnMbnrChain = new Blockchain();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Initialize Monitoring & Crash Reporting
+const monitoring = require('./utils/monitoring.cjs');
+monitoring.setupCrashReporting();
+monitoring.initMonitoring(app);
+
 // --- Security Stack ---
 app.use(helmet({
     contentSecurityPolicy: false, // Disabled for demo simplicity with many external maps/fonts
